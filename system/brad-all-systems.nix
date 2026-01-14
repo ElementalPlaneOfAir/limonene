@@ -27,7 +27,9 @@
   brad_ssh_keys = [
     # Add Brad's SSH public keys here, for example:
     # "ssh-ed25519 AAAAC3Nza... brad@mina-rau"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHaOgK4fO5gTB79Infge2b+31VzXnC23lqV7m5NA+xuz bvenner@proton.me" # mina-rau
   ];
+  RStudio-with-my-packages = pkgs.rstudioWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 rix stringr readxl ]; };
 in {
   # ============================================================================
   # USER CONFIGURATION
@@ -146,6 +148,7 @@ in {
     git                         # Version control
     gcc                         # C/C++ compiler
     openssl_3                   # SSL/TLS library
+    RStudio-with-my-packages    # custom RStudio wrapper defined in let block at top of file
 
     # Development tools
     nix-ld                      # Run non-NixOS binaries
