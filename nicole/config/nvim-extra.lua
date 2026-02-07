@@ -1,6 +1,9 @@
 -- Use system clipboard for yank/paste
 vim.opt.clipboard:append("unnamedplus")
 
+-- Enable project-local config files (.nvim.lua)
+vim.opt.exrc = true
+
 -- Tab spacing configuration (2 spaces)
 vim.opt.tabstop = 2        -- Number of spaces a tab character displays as
 vim.opt.shiftwidth = 2     -- Number of spaces for each indent level

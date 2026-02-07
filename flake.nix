@@ -84,6 +84,7 @@
               nixpkgs.overlays = [
                 inputs.rust-overlay.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
+                inputs.claude-code-overlay.overlays.default
               ];
               environment.systemPackages = [
                 (import ./modules/regular-linux-shell.nix {inherit pkgs;})
@@ -213,5 +214,8 @@
 
     # spacebar for macOS status bar
     spacebar.url = "github:cmacrae/spacebar/v1.4.0";
+
+    # claude-code-overlay for pre-built Claude Code binaries
+    claude-code-overlay.url = "github:ryoppippi/claude-code-overlay";
   };
 }
