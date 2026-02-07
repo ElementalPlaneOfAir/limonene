@@ -36,8 +36,7 @@
       # textpieces # Text manipulation tool
       baobab # disk usage analyzer
       # Clipboard tools for Wine/Wayland integration
-      xclip
-      wl-clipboard-x11
+      wl-clipboard-x11  # provides xclip compatibility for Wine apps
 # disabled since it might be requiring a huge manual build of webkitgtk
       # bookworm # yet another ebook reader
       koreader # Another Ebook Reader, mostly for embedded
