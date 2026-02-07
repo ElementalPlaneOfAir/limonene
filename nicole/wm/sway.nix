@@ -10,6 +10,7 @@
   caffeine-toggle = pkgs.writeShellScriptBin "caffeine-toggle" ''
     if systemctl --user is-active --quiet swayidle; then
       systemctl --user stop swayidle
+      echo 'systemctl --user start swayidle' | at now + 2 hours
       echo "☕"
     else
       systemctl --user start swayidle
@@ -24,16 +25,22 @@
       echo "☕"
     fi
   '';
+
+  clipboard-type = pkgs.writeShellScriptBin "clipboard-type" ''
+    ${pkgs.wl-clipboard}/bin/wl-paste | ${pkgs.wtype}/bin/wtype -
+  '';
 in {
   # You can import other home-manager modules here
 
   home.packages = with pkgs; [
     caffeine-toggle
     caffeine-status
+    clipboard-type
     wlogout
     wireplumber
     # Sway DE Stuff
     wl-clipboard
+    wtype # Type text on Wayland
     wev # Wayland Event Viewer
     swaybg # wallpaper
     wlsunset
@@ -45,7 +52,6 @@ in {
     bemenu # cmd bemenu-run
     fuzzel
     tofi # cmd tofi-run
-    foot
     pwvucontrol
   ];
   programs.wlogout = {
@@ -158,6 +164,8 @@ in {
       };
       startup = [
         {command = "light -N .1";}
+        # wl-clipboard-x11 bridges Wayland clipboard to X11 for Wine apps
+        {command = "${pkgs.wl-clipboard-x11}/bin/wl-clipboard-x11";}
         {command = "swaymsg 'workspace 1; exec kitty'";}
         {command = "swaymsg 'workspace 5; exec firefox'";}
         {command = "swaymsg 'workspace 9; exec easyeffects'";}
@@ -195,6 +203,7 @@ in {
           "${mod}+Right" = "workspace next";
           "${mod}+Left" = "workspace prev";
           "${mod}+p" = "exec wlogout";
+          "Ctrl+Shift+${mod}+v" = "exec clipboard-type";
         };
     };
     # output "*" bg  fill

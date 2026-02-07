@@ -125,8 +125,12 @@
                 inputs.spacebar.overlay.aarch64-darwin
               ];
 
-              # Basic nix-darwin configuration
               nix.enable = false;
+              # Basic nix-darwin configuration
+              # nix = {
+              #   enable = true;
+              #   linux-builder.enable = true;
+              # };
               # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
               # System packages available to all users
@@ -170,7 +174,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.users.nicole = {
                 imports = [
-                  ./home/nicole-darwin.nix
+                  ./nicole/nicole-darwin.nix
                   inputs.nvf.homeManagerModules.default
                 ];
               };
@@ -214,8 +218,7 @@
 
     # spacebar for macOS status bar
     spacebar.url = "github:cmacrae/spacebar/v1.4.0";
-
-    # claude-code-overlay for pre-built Claude Code binaries
-    claude-code-overlay.url = "github:ryoppippi/claude-code-overlay";
+    # Do not have spacebar follow nixpkgs
+    # spacebar.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

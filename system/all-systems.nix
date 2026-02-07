@@ -12,6 +12,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBQresTdgx3Se26QxvwD/S9SaCRCWL8dvZwZ6IM62b2 nicole@cheddar"
   ];
 in {
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
   users.users.nicole = {
     openssh.authorizedKeys.keys = nicole_ssh_keys;
   };
@@ -25,6 +26,7 @@ in {
     nrb = ''nixos-rebuild build --verbose --flake /home/nicole/limonene'';
   };
   services.flatpak.enable = true;
+  services.atd.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -35,6 +37,7 @@ in {
     fwupd
     stress
     phoronix-test-suite
+    lutris
 
     yggdrasil
     python314
@@ -50,11 +53,19 @@ in {
     # system packages
     gcc
     openssl_3
+    # Write to cpu registers:
+    msr-tools
   ];
   # Software for bios updates.
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
   programs.light.enable = true;
+
+  # Disable wakeup for internal laptop keyboard (serio0)
+  # Prevents accidental wake from suspend when external keyboard rests on laptop
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="serio", KERNEL=="serio0", ATTR{power/wakeup}="disabled"
+  '';
 
   virtualisation.docker = {
     enable = true;
@@ -68,6 +79,10 @@ in {
   # networking.wireless.enable= true;
   hardware.enableAllFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Allow non-root processes to bind to privileged ports (80, 443)
+  # Required for local development with Caddy HTTPS
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
   networking.firewall = {
     enable = false;
