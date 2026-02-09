@@ -159,6 +159,9 @@ in {
     heroic                      # Epic Games launcher
     feather                     # Monero wallet
 
+    # Communication
+    signal-desktop              # Encrypted messaging
+
     # Build tools
     libclang
     pkg-config

@@ -87,7 +87,6 @@
     # inkscape      # Vector graphics editor
     # obs-studio    # Screen recording/streaming
     zed-editor
-    claude-code
     anytype
     gnucash
     # thunderbird   # Email client

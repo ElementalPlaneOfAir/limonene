@@ -11,6 +11,9 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1tyFv2UbkAJMx2U6bp8OwRx5wMpK7/DxSslcPS0sWY nicole@incarnadine"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDBQresTdgx3Se26QxvwD/S9SaCRCWL8dvZwZ6IM62b2 nicole@cheddar"
   ];
+  brad_ssh_keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHaOgK4fO5gTB79Infge2b+31VzXnC23lqV7m5NA+xuz bvenner@proton.me"
+  ];
 in {
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
   users.users.nicole = {
@@ -140,6 +143,14 @@ in {
     shell = pkgs.fish;
   };
 
+  users.users.brad = {
+    isNormalUser = true;
+    description = "Brad";
+    extraGroups = ["networkmanager" "wheel" "docker"];
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = brad_ssh_keys;
+  };
+
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
   ];
@@ -147,7 +158,7 @@ in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix = {
-    settings.trusted-users = ["root" "nicole"];
+    settings.trusted-users = ["root" "nicole" "brad"];
     extraOptions = ''
       experimental-features = nix-command flakes
       extra-substituters = https://devenv.cachix.org
