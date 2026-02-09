@@ -15,7 +15,7 @@
     ../../nicole/common/nvim-wrapped.nix
     ../../nicole/common/cli-tools.nix
     ../../nicole/common/languages.nix
-    ../../nicole/common/git.nix
+    ./git.nix
     ../../nicole/common/kitty.nix
     ../../nicole/fonts.nix
   ];

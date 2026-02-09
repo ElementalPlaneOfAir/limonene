@@ -49,6 +49,12 @@
               inputs.nvf.homeManagerModules.default
             ];
           };
+          home-manager.users.brad = {
+            imports = [
+              ./others/brad/brad.nix
+              inputs.nvf.homeManagerModules.default
+            ];
+          };
         }
       ];
 
@@ -84,6 +90,7 @@
               nixpkgs.overlays = [
                 inputs.rust-overlay.overlays.default
                 inputs.nix-vscode-extensions.overlays.default
+                # inputs.claude-code-overlay.overlays.default
               ];
               environment.systemPackages = [
                 (import ./modules/regular-linux-shell.nix {inherit pkgs;})

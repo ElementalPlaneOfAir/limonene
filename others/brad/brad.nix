@@ -14,7 +14,6 @@
 # - The system will automatically apply your home-manager changes too
 # - To search for packages: nix search nixpkgs <package-name>
 # - Home Manager manual: https://nix-community.github.io/home-manager/
-
 {
   inputs,
   lib,
@@ -28,9 +27,9 @@
 
     # Import Linux-specific packages and configurations from Nicole's setup
     # Since Brad only uses Linux, we don't need to separate this out
-    ../../nicole/linux/desktop-essentials.nix  # Basic desktop apps (Firefox, file manager, etc.)
-    ../../nicole/linux/gaming.nix              # Steam and gaming-related packages
-    ../../nicole/linux/music.nix               # Music production and playback software
+    ../../nicole/linux/desktop-essentials.nix # Basic desktop apps (Firefox, file manager, etc.)
+    ../../nicole/linux/gaming.nix # Steam and gaming-related packages
+    ../../nicole/linux/music.nix # Music production and playback software
   ];
 
   # ============================================================================
@@ -51,29 +50,29 @@
 
   home.packages = with pkgs; [
     # Linux-specific development tools
-    nodejs_25      # JavaScript/Node.js runtime
-    nix-ld         # Run unpatched binaries on NixOS
-    dconf          # Configuration database (used by many apps)
-    mesa           # OpenGL implementation
-    libdrm         # Direct Rendering Manager
+    nodejs_25 # JavaScript/Node.js runtime
+    nix-ld # Run unpatched binaries on NixOS
+    dconf # Configuration database (used by many apps)
+    mesa # OpenGL implementation
+    libdrm # Direct Rendering Manager
 
     # CLI tools
-    otel-desktop-viewer  # OpenTelemetry viewer
-    otel-cli             # OpenTelemetry CLI
-    imv                  # Image viewer for Wayland
-    libsixel             # Graphics in terminal
-    pciutils             # PCI device utilities (lspci)
-    parted               # Disk partitioning tool
-    exfat                # exFAT filesystem support
-    pavucontrol          # PulseAudio volume control (GUI)
-    helvum               # Patchbay for PipeWire (audio routing)
-    xterm                # Terminal emulator
-    networkmanager       # Network management tools
-    nettools             # Network utilities (ifconfig, netstat)
+    otel-desktop-viewer # OpenTelemetry viewer
+    otel-cli # OpenTelemetry CLI
+    imv # Image viewer for Wayland
+    libsixel # Graphics in terminal
+    pciutils # PCI device utilities (lspci)
+    parted # Disk partitioning tool
+    exfat # exFAT filesystem support
+    pavucontrol # PulseAudio volume control (GUI)
+    helvum # Patchbay for PipeWire (audio routing)
+    xterm # Terminal emulator
+    networkmanager # Network management tools
+    nettools # Network utilities (ifconfig, netstat)
 
     # Development tools
-    steam-run      # Run non-NixOS binaries
-    dbeaver-bin    # Database management tool
+    steam-run # Run non-NixOS binaries
+    dbeaver-bin # Database management tool
 
     # ========================================================================
     # ADD YOUR OWN PACKAGES BELOW THIS LINE
@@ -87,6 +86,9 @@
     # gimp          # Image editor
     # inkscape      # Vector graphics editor
     # obs-studio    # Screen recording/streaming
+    zed-editor
+    anytype
+    gnucash
     # thunderbird   # Email client
   ];
 
@@ -110,12 +112,12 @@
   # These variables are available in all your shell sessions
 
   home.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = "1";           # Allow proprietary software
-    SHELL = "${pkgs.fish}/bin/fish";      # Default shell
-    GTK_THEME = "Arc-Dark";               # Dark theme for GTK apps
-    BROWSER = "firefox";                  # Default web browser
-    TERMINAL = "kitty";                   # Default terminal emulator
-    PNPM_HOME = "$HOME/.binaries/pnpm";   # PNPM package manager location
+    NIXPKGS_ALLOW_UNFREE = "1"; # Allow proprietary software
+    SHELL = "${pkgs.fish}/bin/fish"; # Default shell
+    GTK_THEME = "Arc-Dark"; # Dark theme for GTK apps
+    BROWSER = "firefox"; # Default web browser
+    TERMINAL = "kitty"; # Default terminal emulator
+    PNPM_HOME = "$HOME/.binaries/pnpm"; # PNPM package manager location
   };
 
   # ============================================================================
@@ -161,7 +163,7 @@
   # Configure specific applications here
 
   programs = {
-    firefox.enable = true;  # Enable Firefox browser
+    firefox.enable = true; # Enable Firefox browser
 
     # You can add more program configurations here
     # See: https://nix-community.github.io/home-manager/options.html
