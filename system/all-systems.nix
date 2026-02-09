@@ -15,6 +15,9 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHaOgK4fO5gTB79Infge2b+31VzXnC23lqV7m5NA+xuz bvenner@proton.me"
   ];
 in {
+  # Copy flake configuration to /etc/nixos/limonene
+  environment.etc."nixos/limonene".source = ../.;
+
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
   users.users.nicole = {
     openssh.authorizedKeys.keys = nicole_ssh_keys;
