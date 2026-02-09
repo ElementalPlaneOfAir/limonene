@@ -28,14 +28,15 @@ in {
     nrs = ''sudo nixos-rebuild switch --flake /home/nicole/limonene'';
     nrb = ''nixos-rebuild build --verbose --flake /home/nicole/limonene'';
   };
-  services.flatpak.enable = true;
+  # Desktop services disabled for headless systems
+  # services.flatpak.enable = true;
   services.atd.enable = true;
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+  # programs.steam = {
+  #   enable = true;
+  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  # };
   environment.systemPackages = with pkgs; [
     fwupd
     stress
