@@ -19,6 +19,7 @@ in {
   environment.etc."nixos/limonene".source = ../.;
 
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.registrations."aarch64-linux".fixBinary = true;
   users.users.nicole = {
     openssh.authorizedKeys.keys = nicole_ssh_keys;
   };
