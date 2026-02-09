@@ -58,6 +58,8 @@ in {
     openssl_3
     # Write to cpu registers:
     msr-tools
+    # This belongs in the root systems for all packages
+    parted
   ];
   # Software for bios updates.
   services.fwupd.enable = true;
