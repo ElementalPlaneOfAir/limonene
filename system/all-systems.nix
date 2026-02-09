@@ -107,19 +107,19 @@ in {
   time.timeZone = "America/Denver";
   services.gnome.gnome-keyring.enable = true;
 
-  # enable Sway window manager
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  # Desktop environment disabled for headless systems
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
 
-  services.getty = {
-    autologinUser = "nicole";
-    autologinOnce = true;
-  };
-  environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway
-  '';
+  # services.getty = {
+  #   autologinUser = "nicole";
+  #   autologinOnce = true;
+  # };
+  # environment.loginShellInit = ''
+  #   [[ "$(tty)" == /dev/tty1 ]] && sway
+  # '';
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

@@ -1,8 +1,5 @@
-# DEPRECATED: This configuration is no longer used for any active hosts.
-# Preserved for reference. All Linux hosts now use nicole-headless.nix.
-# For desktop systems in the future, import wm/sway.nix and linux/desktop-essentials.nix
-
-# Linux home-manager configuration for nicole
+# Headless Linux home-manager configuration for nicole
+# Used for servers and systems without desktop environment
 {
   inputs,
   lib,
@@ -13,15 +10,6 @@
   imports = [
     # Cross-platform configuration
     ./common.nix
-
-    # Linux-specific window manager
-    wm/sway.nix
-
-    # Linux-specific packages
-    linux/desktop-essentials.nix
-    linux/gaming.nix
-    linux/music.nix
-    linux/misc.nix
   ];
 
   # Linux-specific packages
@@ -63,7 +51,7 @@
     SHELL = "${pkgs.fish}/bin/fish";
     GTK_THEME = "Arc-Dark";
     BROWSER = "firefox";
-    TERMINAL = "kitty";
+    TERMINAL = "xterm";
     PNPM_HOME = "$HOME/.binaries/pnpm";
   };
 
@@ -88,10 +76,6 @@
       publicShare = "${config.home.homeDirectory}/Documents/public";
       templates = null;
     };
-  };
-
-  programs = {
-    firefox.enable = true;
   };
 
   # Nicely reload system units when changing configs
