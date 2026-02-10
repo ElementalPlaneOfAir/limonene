@@ -1,7 +1,6 @@
 # DEPRECATED: This configuration is no longer used for any active hosts.
 # Preserved for reference. All Linux hosts now use nicole-headless.nix.
 # For desktop systems in the future, import wm/sway.nix and linux/desktop-essentials.nix
-
 # Linux home-manager configuration for nicole
 {
   inputs,
@@ -12,8 +11,8 @@
 }: {
   imports = [
     # Cross-platform configuration
-    ./common.nix
 
+    ./nicole-headless.nix
     # Linux-specific window manager
     wm/sway.nix
 
