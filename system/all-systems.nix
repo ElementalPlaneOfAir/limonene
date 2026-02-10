@@ -33,14 +33,7 @@ in {
     nrb = ''nixos-rebuild build --verbose --flake /home/nicole/limonene'';
   };
   # Desktop services disabled for headless systems
-  # services.flatpak.enable = true;
   services.atd.enable = true;
-  # programs.steam = {
-  #   enable = true;
-  #   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #   dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  #   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  # };
   environment.systemPackages = with pkgs; [
     fwupd
     stress
@@ -111,20 +104,6 @@ in {
   # Set your time zone.
   time.timeZone = "America/Denver";
   services.gnome.gnome-keyring.enable = true;
-
-  # Desktop environment disabled for headless systems
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  # };
-
-  # services.getty = {
-  #   autologinUser = "nicole";
-  #   autologinOnce = true;
-  # };
-  # environment.loginShellInit = ''
-  #   [[ "$(tty)" == /dev/tty1 ]] && sway
-  # '';
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

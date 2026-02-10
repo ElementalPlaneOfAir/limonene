@@ -75,6 +75,7 @@
           modules =
             [
               ./system/vermissian-configuration.nix
+              ./system/desktop-systems.nix
               # inputs.hyphae.nixosModules.default
             ]
             ++ inputs.self.lib.baseNixOSModules;
