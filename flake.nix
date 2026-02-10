@@ -75,6 +75,17 @@
             [
               ./system/vermissian-configuration.nix
               # inputs.hyphae.nixosModules.default
+              # Override home-manager config for nicole to enable desktop
+              {
+                home-manager.users.nicole = {
+                  imports = [
+                    ./nicole/nicole-headless.nix
+                    ./nicole/wm/sway.nix
+                    ./nicole/linux/desktop-essentials.nix
+                    inputs.nvf.homeManagerModules.default
+                  ];
+                };
+              }
             ]
             ++ inputs.self.lib.baseNixOSModules;
           specialArgs = {inherit inputs;};
