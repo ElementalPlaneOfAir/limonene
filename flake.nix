@@ -46,7 +46,7 @@
           home-manager.users.nicole = {
             imports = [
               # ./nicole/nicole-headless.nix
-              ./nicole/nicole.nix
+              ./nicole/nicole-desktop.nix
               inputs.nvf.homeManagerModules.default
             ];
           };
