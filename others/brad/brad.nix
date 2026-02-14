@@ -90,6 +90,7 @@
     claude-code
     anytype
     gnucash
+    octaveFull
     # thunderbird   # Email client
   ];
 
