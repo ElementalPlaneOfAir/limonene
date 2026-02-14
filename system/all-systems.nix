@@ -23,6 +23,7 @@ in {
   users.users.nicole = {
     openssh.authorizedKeys.keys = nicole_ssh_keys;
   };
+  services.throttled.enable = true;
 
   services.openssh = {
     enable = true;

@@ -51,7 +51,6 @@
     SHELL = "${pkgs.fish}/bin/fish";
     GTK_THEME = "Arc-Dark";
     BROWSER = "firefox";
-    TERMINAL = "xterm";
     PNPM_HOME = "$HOME/.binaries/pnpm";
   };
 

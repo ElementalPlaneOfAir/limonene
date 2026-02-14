@@ -72,6 +72,12 @@ in {
         treesitter.enable = true;
         format.enable = true;
       };
+
+      wgsl = {
+        enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
     };
 
     # LSP and completion
