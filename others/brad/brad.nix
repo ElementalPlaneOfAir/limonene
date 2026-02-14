@@ -89,6 +89,7 @@
     zed-editor
     anytype
     gnucash
+    octaveFull
     # thunderbird   # Email client
   ];
 
