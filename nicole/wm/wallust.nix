@@ -53,7 +53,7 @@ in {
   ];
 
   xdg.configFile."wallust/wallust.toml".text = ''
-    palette = "dark16"
+    palette = "harddark16"
     check_contrast = true
 
     [templates]

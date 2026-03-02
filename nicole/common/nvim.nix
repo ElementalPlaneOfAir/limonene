@@ -22,6 +22,9 @@
   # Build neopywal.nvim — reads wallust palette and applies it as the colorscheme
   neopywal-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "neopywal-nvim";
+    # Skip the require check — neopywal ships optional themes for plugins we
+    # don't have (barbecue, reactive, lualine, etc.) which fail the check.
+    doCheck = false;
     src = pkgs.fetchFromGitHub {
       owner = "RedsXDD";
       repo = "neopywal.nvim";
@@ -221,7 +224,7 @@ in {
         package = neopywal-nvim;
         setup = ''
           require('neopywal').setup({
-            use_wallust = true,
+            use_palette = { dark = "wallust", light = "wallust" },
             transparent_background = true,
           })
           vim.cmd('colorscheme neopywal')
