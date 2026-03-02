@@ -155,7 +155,6 @@ in {
     devenv                      # Development environments
 
     # Gaming and entertainment
-    wineWowPackages.waylandFull # Run Windows apps/games
     heroic                      # Epic Games launcher
     feather                     # Monero wallet
 

@@ -1,3 +1,11 @@
+-- Re-apply neopywal colorscheme on focus so a wallpaper switch takes effect
+-- without restarting neovim.
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    vim.cmd("colorscheme neopywal")
+  end,
+})
+
 -- Use system clipboard for yank/paste
 vim.opt.clipboard:append("unnamedplus")
 

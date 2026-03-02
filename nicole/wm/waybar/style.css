@@ -1,145 +1,127 @@
-/* Articblush */
-@define-color bg #040c16;
-@define-color contrast #020a14;
-@define-color lighter #09111b;
-@define-color fg #cce9ea;
-@define-color cursorline #15171a;
-@define-color comments #323949;
-@define-color cursor #d9d7d6;
-@define-color color0 #323949;
-@define-color color1 #E6676B;
-@define-color color2 #A2E4B8;
-@define-color color3 #e2d06a;
-@define-color color4 #92bbed;
-@define-color color5 #ecc6e8;
-@define-color color6 #80ffff;
-@define-color color7 #d2daf4;
-@define-color color8 #3d3e51;
-@define-color color9 #FF7377;
-@define-color color10 #AAF0C1;
-@define-color color11 #eadd94;
-@define-color color12 #bdd6f4;
-@define-color color13 #f9ecf7;
-@define-color color14 #b3ffff;
-@define-color color15 #edf7f8;
-@define-color nord0 #2e3440;
-@define-color nord1 #3b4252;
-@define-color nord2 #434c5e;
-@define-color nord3 #4c566a;
-@define-color nord4 #d8dee9;
-@define-color nord5 #e5e9f0;
-@define-color nord6 #eceff4;
-@define-color nord7 #8fbcbb;
-@define-color nord8 #88c0d0;
-@define-color nord9 #81a1c1;
-@define-color nord10 #5e81ac;
-@define-color nord11 #bf616a;
-@define-color nord12 #d08770;
-@define-color nord13 #ebcb8b;
-@define-color nord14 #a3be8c;
-@define-color nord15 #b48ead;
+@import "/home/nicole/.cache/wallust/waybar-colors.css";
 
 * {
   font-family:
     Iosevka Semibold,
     Symbols Nerd Font;
-  font-size: 18px;
+  font-size: 28px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
 }
 
 window#waybar {
   background: transparent;
 }
 
-#custom-nix {
-  background-color: @color8;
-  background-image: url("assets/nix.svg");
-  background-size: contain;
-  background-position: center;
-  padding: 9px 17px;
+/* ── Workspaces ───────────────────────────────────────────────────── */
+
+#workspaces {
+  background: @bg;
   border-radius: 42px;
+  margin: 6px 4px;
+  padding: 0 4px;
 }
 
 #workspaces button {
   color: @comments;
-  background: @bg;
-  padding: 4px 8px;
-  margin: 4px;
-  border-radius: 42px;
-  transition: all 0.5s cubic-bezier(0.5, 1, 0.89, 1);
-}
-#workspaces button.active {
-  color: @fg;
-  padding: 4px 18px;
-}
-#workspaces button.focused {
-  color: @fg;
-  padding: 4px 18px;
+  background: transparent;
+  padding: 4px 10px;
+  border-radius: 38px;
+  transition: all 0.2s ease;
 }
 
-#mpd {
-  background-color: @bg;
-  color: @fg;
-  padding: 4px 24px;
-  margin: 4px;
-  border-radius: 42px;
+#workspaces button.focused,
+#workspaces button.active {
+  color: @bg;
+  background: @color4;
+  padding: 4px 16px;
 }
+
+#workspaces button:hover {
+  color: @fg;
+  background: @lighter;
+}
+
+/* ── Tray ─────────────────────────────────────────────────────────── */
 
 #tray {
-  background: @nord7;
-  margin: 4px;
-  padding: 4px 8px;
-  border-radius: 42px;
-}
-#backlight,
-#pulseaudio,
-#network,
-#custom-caffeine,
-#backlight {
   background: @bg;
-  color: @fg;
-  border-radius: 42px 42px 42px 42px;
-  margin: 8px;
-  padding: 12px 12px;
+  border-radius: 42px;
+  margin: 6px 4px;
+  padding: 4px 12px;
 }
+
+/* ── MPD ──────────────────────────────────────────────────────────── */
+
+#mpd {
+  background: @bg;
+  color: @color5;
+  border-radius: 42px;
+  margin: 6px 4px;
+  padding: 4px 16px;
+}
+
+#mpd.stopped {
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#mpd.paused {
+  color: @comments;
+}
+
+/* ── Clock ────────────────────────────────────────────────────────── */
+
 #clock {
   background: @bg;
   color: @fg;
-  padding: 8px 12px;
-  margin: 4px;
   border-radius: 42px;
+  margin: 6px 4px;
+  padding: 4px 20px;
 }
+
+/* ── Status modules ───────────────────────────────────────────────── */
+
+#backlight,
+#pulseaudio,
+#network,
+#custom-caffeine {
+  background: @bg;
+  color: @fg;
+  border-radius: 42px;
+  margin: 6px 2px;
+  padding: 4px 14px;
+}
+
+/* ── Battery ──────────────────────────────────────────────────────── */
 
 #battery {
-  background: @nord11;
-  color: @bg;
+  background: @bg;
+  color: @color2;
   border-radius: 42px;
-  margin: 8px;
-  padding: 12px;
-  /* Add a transition effect for the battery level changes */
-  transition: background-color 0.5s ease-in-out;
+  margin: 6px 4px;
+  padding: 4px 14px;
+  transition: color 0.5s ease;
 }
 
-/* Battery level styles */
-#battery.above-40 {
-  background-color: @bg;
+#battery.charging,
+#battery.plugged {
+  color: @color2;
 }
 
-#battery.between-20-40 {
-  background-color: @color9; /* Solid red */
+#battery.warning {
+  color: @color3;
 }
 
-#battery.below-20 {
-  animation: flash-red 1s infinite;
+#battery.critical {
+  color: @color9;
+  animation: flash-critical 1s steps(1) infinite;
 }
 
-@keyframes flash-red {
-  0% {
-    background-color: @color9;
-  }
-  50% {
-    background-color: @bg;
-  }
-  100% {
-    background-color: @color9;
-  }
+@keyframes flash-critical {
+  0%   { color: @color9; }
+  50%  { color: @comments; }
+  100% { color: @color9; }
 }

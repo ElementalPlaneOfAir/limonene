@@ -5,8 +5,6 @@
   pkgs,
   ...
 }: let
-  wallpaper_path = "~/Pictures/wallpaper.jpg";
-
   caffeine-toggle = pkgs.writeShellScriptBin "caffeine-toggle" ''
     if systemctl --user is-active --quiet swayidle; then
       systemctl --user stop swayidle
@@ -175,15 +173,11 @@ in {
         {command = "swaymsg 'workspace 10; exec vlc'";}
       ];
       modifier = "Mod1";
-      terminal = "kitty";
+      terminal = "kitty --single-instance";
       menu = "fuzzel";
       gaps.inner = 4;
       gaps.outer = 10;
-      bars = [
-        {
-          command = "waybar";
-        }
-      ];
+      bars = [];
       keybindings = let
         mod = config.wayland.windowManager.sway.config.modifier;
       in
@@ -221,7 +215,7 @@ in {
       seat seat0 xcursor_theme default 48
       output eDP-1 scale 1
       exec mako
-      exec swaybg -i ${wallpaper_path} -m fill
+      exec random-wallpaper
 
       # Disable laptop display if external 4K monitor is detected
       exec_always ${pkgs.writeShellScript "check-4k-display" ''
@@ -252,6 +246,7 @@ in {
   };
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
   };
   xdg.configFile = {
     "waybar/config".source = waybar/config.json;
@@ -265,6 +260,12 @@ in {
       {
         timeout = 600;
         command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
+    ];
+    events = [
+      {
+        event = "after-resume";
+        command = "random-wallpaper";
       }
     ];
   };

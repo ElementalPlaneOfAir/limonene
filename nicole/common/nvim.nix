@@ -18,6 +18,17 @@
       hash = "sha256-6BFgZSQwrh218genHjnldv1xnCjx4PIoXZcFYKVBlGo=";
     };
   };
+
+  # Build neopywal.nvim — reads wallust palette and applies it as the colorscheme
+  neopywal-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "neopywal-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "RedsXDD";
+      repo = "neopywal.nvim";
+      rev = "09188d79b45694141ec779d05cbcc75f994639d1";
+      hash = "sha256-RLwxyGRmU1B8r6xO1YObF8qlNEj7qitNUArUlw092V8=";
+    };
+  };
 in {
   vim = {
     # Basic configuration
@@ -38,12 +49,9 @@ in {
       ../config/nvim-extra.lua
     ];
 
-    # Theme
+    # Theme — managed by neopywal which reads wallust colors directly
     theme = {
-      enable = true;
-      name = "tokyonight";
-      style = "night";
-      transparent = true;
+      enable = false;
     };
 
     # Language support with LSP, formatting, and autocomplete
@@ -206,6 +214,18 @@ in {
       # Note: This plugin works automatically without setup
       sops-nvim = {
         package = sops-nvim;
+      };
+
+      # neopywal.nvim — wallust-driven colorscheme
+      neopywal = {
+        package = neopywal-nvim;
+        setup = ''
+          require('neopywal').setup({
+            use_wallust = true,
+            transparent_background = true,
+          })
+          vim.cmd('colorscheme neopywal')
+        '';
       };
     };
 

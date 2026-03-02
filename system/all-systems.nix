@@ -45,7 +45,6 @@ in {
     python314
     postgresql_17
     nix-ld
-    wineWowPackages.waylandFull
     # lutris
     heroic
     feather

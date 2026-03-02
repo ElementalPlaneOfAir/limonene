@@ -15,6 +15,7 @@
     ./nicole-headless.nix
     # Linux-specific window manager
     wm/sway.nix
+    wm/wallust.nix
 
     # Linux-specific packages
     linux/desktop-essentials.nix

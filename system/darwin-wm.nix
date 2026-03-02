@@ -137,7 +137,7 @@
       alt - b : yabai -m window --insert east
 
       # Applications
-      alt - return : open -na kitty
+      alt - return : ${pkgs.kitty}/bin/kitty --single-instance
       alt - d : open -a "Spotlight"
 
       # Restart yabai
