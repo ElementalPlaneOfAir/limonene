@@ -15,6 +15,7 @@
       font_size = 22;
       background_opacity = "0.8";
       allow_remote_control = "yes";
+      listen_on = "unix:/tmp/kitty-socket";
     };
     keybindings = {
       "super+c" = "copy_to_clipboard";

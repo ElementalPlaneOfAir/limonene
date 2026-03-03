@@ -22,8 +22,13 @@
       exit 1
     fi
 
-    # Generate color scheme and render templates
-    ${pkgs.wallust}/bin/wallust run "$wallpaper"
+    # Generate color scheme and render templates.
+    # -s skips wallust's own OSC sequence output: by default wallust writes
+    # terminal sequences (including a wallpaper-derived background) to ALL open
+    # terminals, which races with the set-colors call below and leaves other
+    # kitty windows with the wrong background (case 2). We handle color
+    # application ourselves via kitty remote control instead.
+    ${pkgs.wallust}/bin/wallust run -s "$wallpaper"
 
     # Swap wallpaper
     pkill swaybg || true
@@ -32,17 +37,16 @@
     # Reload waybar CSS
     pkill -SIGUSR2 waybar || true
 
-    # Hot-reload kitty colors in the current kitty instance.
-    # $KITTY_LISTEN_ON is set automatically by kitty in every window when
-    # allow_remote_control is enabled — no hardcoded socket path needed.
-    if [ -n "$KITTY_LISTEN_ON" ]; then
-      kitty @ --to "$KITTY_LISTEN_ON" set-colors --all \
-        ~/.cache/wallust/colors-kitty.conf || true
-    fi
+    # Hot-reload kitty colors in all windows.
+    # --all        : every currently-open window
+    # --configured : also updates the palette kitty uses for new windows
+    # Fall back to the fixed listen_on socket if KITTY_LISTEN_ON isn't set
+    # (e.g. when called from a sway keybinding rather than a kitty shell).
+    kitty @ --to "${KITTY_LISTEN_ON:-unix:/tmp/kitty-socket}" \
+      set-colors --all --configured \
+      ~/.cache/wallust/colors-kitty.conf || true
 
-    # wallust writes OSC sequences to the terminal asynchronously, so they can
-    # land after the set-colors above and overwrite the background. Force it
-    # back to black as the last thing the script does.
+    # Safety net: force background to black in the current window.
     printf '\033]11;#000000\007'
   '';
 in {
