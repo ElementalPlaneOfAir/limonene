@@ -42,7 +42,7 @@
     # --configured : also updates the palette kitty uses for new windows
     # Fall back to the fixed listen_on socket if KITTY_LISTEN_ON isn't set
     # (e.g. when called from a sway keybinding rather than a kitty shell).
-    kitty @ --to "${KITTY_LISTEN_ON:-unix:/tmp/kitty-socket}" \
+    kitty @ --to "''${KITTY_LISTEN_ON:-unix:/tmp/kitty-socket}" \
       set-colors --all --configured \
       ~/.cache/wallust/colors-kitty.conf || true
 
