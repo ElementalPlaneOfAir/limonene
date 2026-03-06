@@ -13,9 +13,8 @@
       confirm_os_window_close = 0;
       font_family = "VictorMono Nerd Font";
       font_size = 22;
-      background_opacity = "0.8";
+      background_opacity = "0.7";
       allow_remote_control = "yes";
-      listen_on = "unix:/tmp/kitty-socket";
     };
     keybindings = {
       "super+c" = "copy_to_clipboard";

@@ -37,14 +37,16 @@
     # Reload waybar CSS
     pkill -SIGUSR2 waybar || true
 
-    # Hot-reload kitty colors in all windows.
-    # --all        : every currently-open window
-    # --configured : also updates the palette kitty uses for new windows
-    # Fall back to the fixed listen_on socket if KITTY_LISTEN_ON isn't set
-    # (e.g. when called from a sway keybinding rather than a kitty shell).
-    kitty @ --to "''${KITTY_LISTEN_ON:-unix:/tmp/kitty-socket}" \
-      set-colors --all --configured \
-      ~/.cache/wallust/colors-kitty.conf || true
+    # Hot-reload kitty colors in every running kitty instance.
+    # allow_remote_control creates a per-process socket at /tmp/kitty-socket-PID
+    # for each server. Iterating them covers all instances regardless of how
+    # many are open or what their PIDs are — no fixed socket path needed.
+    # --all        : every window in that instance
+    # --configured : new windows in that instance also get the right palette
+    for socket in /tmp/kitty-socket-*; do
+      kitty @ --to "unix:$socket" set-colors --all --configured \
+        ~/.cache/wallust/colors-kitty.conf 2>/dev/null || true
+    done
 
     # Safety net: force background to black in the current window.
     printf '\033]11;#000000\007'

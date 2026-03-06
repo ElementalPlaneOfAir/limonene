@@ -166,7 +166,7 @@ in {
         {command = "light -N .1";}
         # wl-clipboard-x11 bridges Wayland clipboard to X11 for Wine apps
         {command = "${pkgs.wl-clipboard-x11}/bin/wl-clipboard-x11";}
-        {command = "swaymsg 'workspace 1; exec kitty'";}
+        {command = "swaymsg 'workspace 1; exec kitty --single-instance'";}
         {command = "swaymsg 'workspace 5; exec firefox'";}
         {command = "swaymsg 'workspace 9; exec easyeffects'";}
         {command = "swaymsg 'workspace 10; exec signal-desktop'";}
