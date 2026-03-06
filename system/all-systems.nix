@@ -36,6 +36,7 @@ in {
   # Desktop services disabled for headless systems
   services.atd.enable = true;
   environment.systemPackages = with pkgs; [
+    brightnessctl
     fwupd
     stress
     phoronix-test-suite
@@ -62,7 +63,6 @@ in {
   # Software for bios updates.
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
-  programs.light.enable = true;
 
   # Disable wakeup for internal laptop keyboard (serio0)
   # Prevents accidental wake from suspend when external keyboard rests on laptop

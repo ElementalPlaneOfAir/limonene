@@ -211,7 +211,7 @@ in {
   programs.fish.enable = true;
 
   # Enable screen brightness control
-  programs.light.enable = true;
+  programs.brightnessctl.enable = true;
 
   # ============================================================================
   # NIX CONFIGURATION

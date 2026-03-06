@@ -163,7 +163,6 @@ in {
         };
       };
       startup = [
-        {command = "light -N .1";}
         # wl-clipboard-x11 bridges Wayland clipboard to X11 for Wine apps
         {command = "${pkgs.wl-clipboard-x11}/bin/wl-clipboard-x11";}
         {command = "swaymsg 'workspace 1; exec kitty --single-instance'";}
@@ -187,8 +186,8 @@ in {
           "${mod}+equal" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ --limit 1.0";
           "${mod}+minus" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-";
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "XF86MonBrightnessDown" = "exec light -U 5";
-          "XF86MonBrightnessUp" = "exec light -A 5";
+          "XF86MonBrightnessDown" = "exec brightnessctl -n 1 set 5%-";
+          "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
           "XF86AudioPlay" = "exec mpc toggle -q";
           # Awful Hack to fix the fact that seeking is broken
           "XF86AudioNext" = "exec mpc -q seek +5% && mpc toggle -q && mpc toggle -q";
