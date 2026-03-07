@@ -15,7 +15,6 @@
 # 1. System-wide packages go in the environment.systemPackages section below
 # 2. User-specific packages go in your home-manager config (others/brad/brad.nix)
 # 3. To search for packages: nix search nixpkgs <package-name>
-
 {
   config,
   pkgs,
@@ -29,7 +28,7 @@
     # "ssh-ed25519 AAAAC3Nza... brad@mina-rau"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHaOgK4fO5gTB79Infge2b+31VzXnC23lqV7m5NA+xuz bvenner@proton.me" # mina-rau
   ];
-  RStudio-with-my-packages = pkgs.rstudioWrapper.override{ packages = with pkgs.rPackages; [ ggplot2 rix stringr readxl ]; };
+  RStudio-with-my-packages = pkgs.rstudioWrapper.override {packages = with pkgs.rPackages; [ggplot2 rix stringr readxl];};
 in {
   # ============================================================================
   # USER CONFIGURATION
@@ -40,11 +39,11 @@ in {
     isNormalUser = true;
     description = "Brad";
     extraGroups = [
-      "networkmanager"  # Allows managing network connections
-      "wheel"           # Allows using sudo for admin tasks
-      "docker"          # Allows using Docker without sudo
+      "networkmanager" # Allows managing network connections
+      "wheel" # Allows using sudo for admin tasks
+      "docker" # Allows using Docker without sudo
     ];
-    shell = pkgs.fish;  # Use Fish shell (friendly, modern shell)
+    shell = pkgs.fish; # Use Fish shell (friendly, modern shell)
 
     # SSH authorized keys (for remote access)
     openssh.authorizedKeys.keys = brad_ssh_keys;
@@ -56,7 +55,7 @@ in {
 
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = false;  # Only allow key-based auth (more secure)
+    settings.PasswordAuthentication = false; # Only allow key-based auth (more secure)
   };
 
   # ============================================================================
@@ -132,34 +131,34 @@ in {
 
   environment.systemPackages = with pkgs; [
     # System utilities
-    fwupd                       # Firmware update tool
-    stress                      # System stress testing
-    phoronix-test-suite         # Benchmark suite
-    gnome-disk-utility          # Disk management GUI
+    fwupd # Firmware update tool
+    stress # System stress testing
+    phoronix-test-suite # Benchmark suite
+    gnome-disk-utility # Disk management GUI
 
     # Networking
-    yggdrasil                   # Mesh network
-    networkmanager              # Network management
-    nettools                    # Network utilities
+    yggdrasil # Mesh network
+    networkmanager # Network management
+    nettools # Network utilities
 
     # Programming languages and tools
-    python314                   # Python programming language
-    postgresql_17               # PostgreSQL database
-    git                         # Version control
-    gcc                         # C/C++ compiler
-    openssl_3                   # SSL/TLS library
-    RStudio-with-my-packages    # custom RStudio wrapper defined in let block at top of file
+    python314 # Python programming language
+    postgresql_17 # PostgreSQL database
+    git # Version control
+    gcc # C/C++ compiler
+    openssl_3 # SSL/TLS library
+    RStudio-with-my-packages # custom RStudio wrapper defined in let block at top of file
 
     # Development tools
-    nix-ld                      # Run non-NixOS binaries
-    devenv                      # Development environments
+    nix-ld # Run non-NixOS binaries
+    devenv # Development environments
 
     # Gaming and entertainment
-    heroic                      # Epic Games launcher
-    feather                     # Monero wallet
+    heroic # Epic Games launcher
+    feather # Monero wallet
 
     # Communication
-    signal-desktop              # Encrypted messaging
+    signal-desktop # Encrypted messaging
 
     # Build tools
     libclang
