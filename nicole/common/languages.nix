@@ -2,7 +2,8 @@
   home.packages = with pkgs; [
     # JavaScript/TypeScript
     tailwindcss
-    corepack # includes pnpm, yarn
+    # corepack # includes pnpm, yarn
+    pnpm
 
     # Python
     uv
