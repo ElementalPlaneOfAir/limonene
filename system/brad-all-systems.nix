@@ -130,6 +130,7 @@ in {
   # 3. Rebuild with: sudo nixos-rebuild switch --flake /home/brad/limonene#mina-rau
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
     # System utilities
     fwupd # Firmware update tool
     stress # System stress testing
@@ -208,9 +209,6 @@ in {
 
   # Enable Fish shell system-wide
   programs.fish.enable = true;
-
-  # Enable screen brightness control
-  programs.brightnessctl.enable = true;
 
   # ============================================================================
   # NIX CONFIGURATION
