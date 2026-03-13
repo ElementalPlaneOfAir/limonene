@@ -45,8 +45,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.users.nicole = {
             imports = [
-              # ./nicole/nicole-headless.nix
-              ./nicole/nicole-desktop.nix
+              ./nicole/nicole-headless.nix
               inputs.nvf.homeManagerModules.default
             ];
           };
@@ -61,7 +60,10 @@
               ./system/incarnadine-configuration.nix
               ./system/desktop-systems.nix
               ({lib, ...}: {
-                home-manager.users.nicole.services.swayidle.enable = lib.mkForce false;
+                home-manager.users.nicole = {
+                  imports = [./nicole/nicole-desktop.nix];
+                  services.swayidle.enable = lib.mkForce false;
+                };
               })
             ]
             ++ inputs.self.lib.baseNixOSModules;
@@ -74,6 +76,9 @@
             [
               ./system/vermissian-configuration.nix
               ./system/desktop-systems.nix
+              ({...}: {
+                home-manager.users.nicole.imports = [./nicole/nicole-desktop.nix];
+              })
               # inputs.hyphae.nixosModules.default
             ]
             ++ inputs.self.lib.baseNixOSModules;
