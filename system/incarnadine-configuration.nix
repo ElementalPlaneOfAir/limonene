@@ -40,6 +40,20 @@
     variant = "";
   };
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true; # needed for KMS framebuffer capture on Wayland
+    openFirewall = true;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # 32-bit game compatibility
+  };
+
+  users.users.nicole.extraGroups = ["video" "render"];
+
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }

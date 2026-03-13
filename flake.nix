@@ -65,6 +65,10 @@
           modules =
             [
               ./system/incarnadine-configuration.nix
+              ./system/desktop-systems.nix
+              ({lib, ...}: {
+                home-manager.users.nicole.services.swayidle.enable = lib.mkForce false;
+              })
             ]
             ++ inputs.self.lib.baseNixOSModules;
           specialArgs = {inherit inputs;};
