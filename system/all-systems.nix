@@ -32,6 +32,7 @@ in {
   environment.shellAliases = {
     nrs = ''sudo nixos-rebuild switch --flake /home/nicole/limonene'';
     nrb = ''nixos-rebuild build --verbose --flake /home/nicole/limonene'';
+    nrd = ''nix build --dry-run /home/nicole/limonene#nixosConfigurations.$(hostname).config.system.build.toplevel'';
   };
   # Desktop services disabled for headless systems
   services.atd.enable = true;

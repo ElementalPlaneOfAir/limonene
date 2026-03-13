@@ -50,12 +50,6 @@
               inputs.nvf.homeManagerModules.default
             ];
           };
-          home-manager.users.brad = {
-            imports = [
-              ./others/brad/brad.nix
-              inputs.nvf.homeManagerModules.default
-            ];
-          };
         }
       ];
 
@@ -219,6 +213,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
     # Hyphae distributed storage system
     # hyphae.url = "path:/home/nicole/Documents/hyphae";

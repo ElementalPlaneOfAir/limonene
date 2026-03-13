@@ -261,11 +261,8 @@ in {
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
-    events = [
-      {
-        event = "after-resume";
-        command = "random-wallpaper";
-      }
-    ];
+    events = {
+      "after-resume" = "random-wallpaper";
+    };
   };
 }

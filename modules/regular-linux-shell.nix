@@ -29,8 +29,8 @@ let
     # libXtst
     
     # xauth and xvfb
-    xorg.xauth
-    xorg.xvfb
+    xauth
+    xvfb
 
     glib
     glib.dev
@@ -78,11 +78,11 @@ pkgs.buildFHSEnv {
     glib.dev
     
     # Graphics and GUI libraries (for GUI Rust apps)
-    xorg.libX11
-    xorg.libX11.dev
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXi
+    libx11
+    libx11.dev
+    libxcursor
+    libxrandr
+    libxi
     mesa
     # mesa.dev
     vulkan-headers

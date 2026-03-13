@@ -50,7 +50,7 @@
 
   home.packages = with pkgs; [
     # Linux-specific development tools
-    nodejs_25 # JavaScript/Node.js runtime
+    # nodejs_25 # Disabled: always builds from source (no cache hit), use nodejs_22 via anytype if needed
     nix-ld # Run unpatched binaries on NixOS
     dconf # Configuration database (used by many apps)
     mesa # OpenGL implementation
@@ -86,7 +86,7 @@
     # inkscape      # Vector graphics editor
     # obs-studio    # Screen recording/streaming
     zed-editor
-    anytype
+    # anytype # Disabled: builds from source (Electron/npm), slow — re-enable once cached on cache.nixos.org
     gnucash
     octaveFull
     # thunderbird   # Email client
