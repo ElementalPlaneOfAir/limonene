@@ -65,7 +65,6 @@
     parted # Disk partitioning tool
     exfat # exFAT filesystem support
     pavucontrol # PulseAudio volume control (GUI)
-    helvum # Patchbay for PipeWire (audio routing)
     xterm # Terminal emulator
     networkmanager # Network management tools
     nettools # Network utilities (ifconfig, netstat)

@@ -41,7 +41,6 @@
     parted
     exfat
     pavucontrol
-    helvum
     xterm
     networkmanager
     nettools
