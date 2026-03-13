@@ -47,6 +47,10 @@
     openFirewall = true;
   };
 
+  # wlr-randr is the Wayland equivalent of xrandr, used by Sunshine for
+  # resolution switching when a client connects/disconnects
+  environment.systemPackages = [ pkgs.wlr-randr ];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true; # 32-bit game compatibility
