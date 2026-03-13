@@ -26,7 +26,7 @@
 
   # Linux-specific packages
   home.packages = with pkgs; [
-    nodejs_25
+    # nodejs_25 # Disabled: always builds from source (no cache hit), re-enable once cached on cache.nixos.org
     nix-ld
     dconf
     mesa
