@@ -6,7 +6,13 @@
   ...
 }: {
   home.packages = with pkgs; [
+    # Star shit
+    stellarium
+
+    # Acounting
     gnucash
+
+    # chess
     chessx
     chess-tui
     stockfish

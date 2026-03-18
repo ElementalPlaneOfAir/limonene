@@ -42,6 +42,8 @@ in {
     stress
     phoronix-test-suite
     lutris
+    winetricks
+    wineWow64Packages.stable
 
     yggdrasil
     python314

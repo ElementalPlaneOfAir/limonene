@@ -219,6 +219,19 @@ in {
         package = sops-nvim;
       };
 
+      # lean.nvim — Lean theorem prover support
+      lean-nvim = {
+        package = pkgs.vimPlugins.lean-nvim;
+        setup = ''
+          require('lean').setup({
+            mappings = true,
+            infoview = {
+              autoopen = true,
+            },
+          })
+        '';
+      };
+
       # neopywal.nvim — wallust-driven colorscheme
       neopywal = {
         package = neopywal-nvim;
