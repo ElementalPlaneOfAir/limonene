@@ -81,7 +81,7 @@
     # discord       # Voice/text chat
     # spotify       # Music streaming
     # vlc           # Media player
-    # libreoffice   # Office suite
+    libreoffice-qt-fresh   # Office suite
     # gimp          # Image editor
     # inkscape      # Vector graphics editor
     # obs-studio    # Screen recording/streaming
