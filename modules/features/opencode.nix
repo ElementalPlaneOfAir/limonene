@@ -1,11 +1,11 @@
-{ inputs, ... }: {
-  flake.modules.homeManager.opencode = { config, ... }: {
-    imports = [ inputs.sops-nix.homeManagerModules.sops ];
+{inputs, ...}: {
+  flake.modules.homeManager.opencode = {config, ...}: {
+    imports = [inputs.sops-nix.homeManagerModules.sops];
 
     sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     sops.secrets.openrouter_api_key = {
-      sopsFile = ../../secrets/secrets.yaml;
+      sopsFile = ../../secrets/nicole-secrets.yaml;
     };
 
     # Render auth.json with the decrypted key substituted in by sops-nix.
@@ -21,7 +21,9 @@
       settings = {
         autoupdate = false;
         autoshare = false;
-        model = "openrouter/anthropic/claude-sonnet-4-6";
+        models = {
+          "nvidia/nemotron-3-nano-30b-a3b" = {};
+        };
       };
     };
   };
