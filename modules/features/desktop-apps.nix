@@ -1,5 +1,7 @@
 { ... }: {
   flake.modules.homeManager.desktopApps = { pkgs, ... }: {
+    services.kdeconnect.enable = true;
+
     home.packages = with pkgs; [
       # Star shit
       stellarium

@@ -8,7 +8,6 @@
       gaming
       music
       vscode
-      misc
     ];
 
     home.sessionVariables = {

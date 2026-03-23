@@ -2,6 +2,7 @@
   flake.nixosConfigurations.mina-rau = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
+      inputs.self.modules.nixos.base
       inputs.self.modules.nixos.bradBase
       inputs.self.modules.nixos.gaming
       inputs.hardware.nixosModules.framework-amd-ai-300-series

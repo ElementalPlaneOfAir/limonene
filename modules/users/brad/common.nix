@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.homeManager.bradCommon = {
+  flake.modules.homeManager.bradCommon = { config, ... }: {
     imports = with inputs.self.modules.homeManager; [
       shells
       cliTools
@@ -23,6 +23,11 @@
         init.defaultBranch = "main";
         pull.rebase = true;
       };
+    };
+
+    home.shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/limonene";
+      nrb = "nixos-rebuild build --verbose --flake ${config.home.homeDirectory}/limonene";
     };
 
     home.sessionPath = [

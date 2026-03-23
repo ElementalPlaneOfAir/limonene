@@ -1,5 +1,5 @@
 { ... }: {
-  flake.modules.homeManager.kitty = { pkgs, ... }: {
+  flake.modules.homeManager.kitty = { pkgs, config, ... }: {
     programs.kitty = {
       enable = true;
       shellIntegration.enableFishIntegration = true;
@@ -16,7 +16,7 @@
         "super+v" = "paste_from_clipboard";
       };
       extraConfig = ''
-        include /home/nicole/.cache/wallust/colors-kitty.conf
+        include ${config.home.homeDirectory}/.cache/wallust/colors-kitty.conf
       '';
     };
   };
