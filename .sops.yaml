@@ -1,0 +1,8 @@
+keys:
+  - &nicole age1m2w4k4rgnzdynx0s9xqvx7k66dfa4jv5q20hgxp6dcjjwz09mdlqqzgves
+
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *nicole
